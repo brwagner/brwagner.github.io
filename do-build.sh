@@ -2,7 +2,6 @@
 
 git commit -m "$*" && \
 LAST_COMMIT=`git rev-parse HEAD` && \
-git push origin master && \
+git push origin soruces && \
 bundle exec jekyll build && \
-cd _site/ && touch .nojekyll && git commit -m "Build of master/$LAST_COMMIT"
-
+(cd _site/ && touch .nojekyll && git commit -m "Build of master/$LAST_COMMIT" && git push origin master)
