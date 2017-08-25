@@ -1,0 +1,47 @@
+---
+title: Ben Rajs Wagner
+layout: default
+---
+
+-
+  var animDuration = 1.0
+  var titleStrings = ['Ben ', 'Rajs ', 'Wagner']
+  var titleAnimDuration = animDuration / titleStrings.length
+  var projects = [
+    { title: 'DrawLaPhone', image: 'drawlaphone.png', url: 'drawlaphone'},
+    { title: 'Rocketgilbs', image: 'rocketgilbs.png', url: 'rocketgilbs' },
+    { title: 'GPS Alarm Clock', image: 'gps-alarm-clock.png', url: 'gps-alarm-clock' },
+    { title: 'STAR Submarine', image: 'star-submarine.png', url: 'star-submarine' },
+    { title: 'Heightmap Generation', image: 'midpoint-displacement.jpg', url: 'midpoint-displacement' },
+    { title: 'PCG 3D Maze', image: '3d-maze.png', url: '3d-maze' }
+  ]
+
+div(class='purple jumbotrax parallax')
+  div(class='word-holder')
+    span(class='jumbotrax-word-block jumbotrax-title-text white-text')
+      each val, index in titleStrings
+        span(
+          class='wow fadeIn',
+          data-wow-duration=titleAnimDuration + 's',
+          data-wow-delay=index * titleAnimDuration + 's'
+        )=val
+    span(
+      class='wow fadeInLeft jumbotrax-word-block jumbotrax-subtitle-text white-text'
+      data-wow-duration='0.5s',
+      data-wow-delay=animDuration + 's'
+    ) Web, mobile, games, etc.
+
+div(class='container')
+  p(class='wow fadeIn')
+    | Welcome to my digital portfolio. Click on an image for a description
+    | of the project it shows. Visit my #[a(href='https://github.com/brwagner') GitHub]
+    | for source code.
+  div(class='row')
+    each project, index in projects
+      div(
+        class='col s12 m6 wow fadeIn',
+        data-wow-duration=animDuration + 's'
+      )
+        a(href='/projects/' + project.url)
+          img(class='hoverable responsive-img z-depth-2', src='/img/' + project.image)
+        h5(class='center-align', style='text-decoration: none;')=project.title
