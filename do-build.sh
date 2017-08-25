@@ -14,6 +14,6 @@ bundle exec jekyll build && \
  touch .nojekyll && \
  git checkout master && \
  git add -A && \
- git commit -m "Build of master/$LAST_COMMIT" && \
+ git commit -m "Build of https://github.com/brwagner/brwagner.github.io/commit/$LAST_COMMIT" && \
  git push origin master)
 git checkout sources
