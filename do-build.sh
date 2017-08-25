@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git commit -m \"'$*'\" && \
+git commit -m \""$*"\" && \
 LAST_COMMIT=`git rev-parse HEAD` && \
 git push origin soruces && \
 bundle exec jekyll build && \
