@@ -1,0 +1,12 @@
+---
+layout: project
+title: Heightmap Generation
+---
+include mixins
+- setAllFiles({{ site.static_files | jsonify }});
+
+p.flow-text.
+  A height-map generator using a midpoint displacement algorithm. Below are some examples of height-maps I generated. I color each pixel differently based on elevation.
+
+div(style='margin: 0 15% 0 15%')
+  +slideShow('/img/heightmap-gen/')

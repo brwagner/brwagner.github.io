@@ -2,6 +2,8 @@
 layout: project
 title: Rocketgilbs
 ---
+include mixins
+- setAllFiles({{ site.static_files | jsonify }});
 
 p.flow-text.
   RocketGilbs is a physics-action-puzzle game. You play as astronaut Gilbs who is trying to rescue his dad who got sucked out of the airlock while teaching Gilbs to drive. The game consists of a series of levels in which the player must attempt to navigate their rocket ship around planets in order to reach distress signals. Once the player has reached all of the signals in the level, they move on to the next one. This may sound easy enough but there is one catch, Gilbs' dad never taught him how to turn so you only have the controls to accelerate and decelerate. The nose of the ship will always face the direction that the ship is moving which means the player must use the gravity of the planets to steer the ship.
@@ -11,14 +13,7 @@ h3 Version 2
 p.flow-text.
   This is the most recent version of the game that I presented at the Northeastern Game Expo. This version is made in Unity. The planets are procedurally generated in blender.
 
-div.video-container
-  iframe(
-    width='853',
-    height='480',
-    src='https://www.youtube.com/embed/mwt07E7XFmU?rel=0&amp;showinfo=0',
-    frameborder='0',
-    allowfullscreen
-  )
++youtube('mwt07E7XFmU')
 
 h3 Version 1
 
@@ -37,12 +32,7 @@ div.video-container
 p.flow-text.
   Here are some stills with the settings turned up.
 
-- var number = 0;
-div.carousel.carousel-slider
-  each file in {{ site.static_files | jsonify }}
-    if file.path.startsWith('/img/rocketgilbs-screenshots/')
-      a.carousel-item(href='#screenshot-' + number++)
-        img(src=file.path)
++slideShow('/img/rocketgilbs-screenshots/')
 
 p.flow-text.
   I plan on coming out with a third version, which will feature a different art style and more of an open world field. I am bringing in an artist and a programmer to help me with the project, which hopefully should make development faster. I am using the #[a(href='https://strangeioc.github.io/strangeioc/') StrangeIOC] framework to develop the new version since I am a fan of dependency injection and MVC style programming, and from my experience it seems to do a good job at decoupling code, which I sometimes find difficult with the AdHoc nature Unity's component system.

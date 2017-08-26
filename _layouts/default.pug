@@ -22,20 +22,25 @@ html
           $('.carousel').carousel('next');
         }
         var interval = setInterval(nextSlide, 3000);
-        $('.carousel.carousel-slider').on('mousedown', function(e) {
+        $('.carousel').on('mousedown', function(e) {
           clearInterval(interval);
           interval = setInterval(nextSlide, 3000);
         });
       });
   body
-    div.navbar-fixed
-      nav.nav-wrapper
-        a.brand-logo(href='/') &nbsp;[B.R.W]
-        ul#nav-mobile.right.hide-on-med-and-down
-          li
-            a(href='#') Home
-          li
-            a(href='#') Projects
-          li
-            a(href='#') Contact
-    | {{content}}
+    header
+      div.navbar-fixed
+        nav.nav-wrapper
+          a.brand-logo(href='/') &nbsp;[B.R.W]
+          ul#nav-mobile.right.hide-on-med-and-down
+            li
+              a(href='#') Home
+            li
+              a(href='#') Projects
+            li
+              a(href='#') Contact
+    main {{content}}
+    footer.page-footer(style='padding-bottom: 20px;')
+      div.right-align.container.
+        © {{ 'now' | date: "%Y" }} Benjamin Rajs Wagner
+

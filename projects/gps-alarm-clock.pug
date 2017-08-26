@@ -2,15 +2,13 @@
 layout: project
 title: GPS Alarm Clock
 ---
+include mixins
+- setAllFiles({{ site.static_files | jsonify }});
 
 p.flow-text.
   When I was interning at SGP International over the past few summers I spent many days commuting in and out of the city by bus. I found myself asleep on the bus headed home many times after long days and I found myself missing my stop several times because of it. My dad who also takes the bus into the city every day has the same problem occasionally. I've finally gotten around to solving this problem by creating a "GPS guided alarm clock" app for android. The app itself is pretty simple. Just type in your destination and how far away you want to be before being woken up.
 
-div.row
-  each file in {{ site.static_files | jsonify }}
-    if file.path.startsWith('/img/gps-alarm-clock/')
-      div.col.s12.m6
-        img.responsive-img.z-depth-2(src=file.path)
++photos('/img/gps-alarm-clock/')
 
 p.flow-text.
   One of the biggest problems I had was tweaking the app to use as little energy as possible as any app that uses GPS can get very expensive very quickly in terms of power consumption. I ended up dealing with this problem by setting the GPS to be less accurate the further away you are from your destination and more and more accurate as you get closer. This project was mostly an exercise in exploring the Android SDK and the Google Maps API so I am not going to release the source code as most of it was exploratory coding.

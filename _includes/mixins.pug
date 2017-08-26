@@ -1,0 +1,39 @@
+
+-
+  var allFiles = [];
+  function setAllFiles(files) {
+    allFiles = files;
+  }
+  function slugify(text) {
+    return text.toString().toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '');            // Trim - from end of text
+  }
+
+mixin youtube(id)
+  div.video-container
+    iframe(
+      width='853',
+      height='480',
+      src='https://www.youtube.com/embed/' + id + '?rel=0&amp;showinfo=0',
+      frameborder='0',
+      allowfullscreen
+    )
+
+mixin photos(filter_directory)
+  div.row
+    each file in allFiles
+      if file.path.startsWith(filter_directory)
+        div.col.s12.m6
+          img.responsive-img.z-depth-2(src=file.path)
+
+mixin slideShow(filter_directory)
+  - var number = 0;
+  div.carousel.carousel-slider.z-depth-2(style='margin-top: 25px; margin-bottom: 25px')
+    each file in allFiles
+      if file.path.startsWith(filter_directory)
+        a.carousel-item(href='#' + slugify(file.path) + '-screenshot-' + number++)
+          img(src=file.path)
