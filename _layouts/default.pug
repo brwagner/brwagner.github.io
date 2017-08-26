@@ -10,7 +10,23 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    script new WOW().init();
+    script.
+      new WOW().init();
+      $(document).ready(function(){
+        $('.carousel.carousel-slider').carousel({
+          fullWidth: true,
+          duration: 375,
+          indicators: true
+        });
+        function nextSlide() {
+          $('.carousel').carousel('next');
+        }
+        var interval = setInterval(nextSlide, 3000);
+        $('.carousel.carousel-slider').on('mousedown', function(e) {
+          clearInterval(interval);
+          interval = setInterval(nextSlide, 3000);
+        });
+      });
   body
     div.navbar-fixed
       nav.nav-wrapper
