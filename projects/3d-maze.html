@@ -1,0 +1,17 @@
+<!DOCTYPE html><html><head><title>PCG 3D Maze</title><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"><link rel="stylesheet" href="/css/styles.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1.0"><script>new WOW().init();
+$(document).ready(function(){
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    duration: 375,
+    indicators: true
+  });
+  function nextSlide() {
+    $('.carousel').carousel('next');
+  }
+  var interval = setInterval(nextSlide, 3000);
+  $('.carousel').on('mousedown', function(e) {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 3000);
+  });
+});</script></head><body><header><div class="navbar-fixed"><nav class="nav-wrapper"><a class="brand-logo" href="/">&nbsp;[B.R.W]</a><ul class="right hide-on-med-and-down" id="nav-mobile"><li><a href="#">Home</a></li><li><a href="#">Projects</a></li><li><a href="#">Contact</a></li></ul></nav></div></header><main><div class="container"><h2>PCG 3D Maze</h2><div><p class="flow-text">I decided to experiment with creating a randomly generated 3D maze in unity by implementing Kruskal's algorithm on a gird with randomly assigned edge weights. I was thinking of perhaps using it in the future as a way to create random maps for a multiplayer FPS.
+</p><div class="carousel carousel-slider z-depth-2" style="margin-top: 25px; margin-bottom: 25px;"><a class="carousel-item" href="#img3d-maze-screenshotsmaze1png-screenshot-0"><img src="/img/3d-maze-screenshots/maze1.png"/></a><a class="carousel-item" href="#img3d-maze-screenshotsmaze2png-screenshot-1"><img src="/img/3d-maze-screenshots/maze2.png"/></a><a class="carousel-item" href="#img3d-maze-screenshotsmaze3png-screenshot-2"><img src="/img/3d-maze-screenshots/maze3.png"/></a><a class="carousel-item" href="#img3d-maze-screenshotsmaze4png-screenshot-3"><img src="/img/3d-maze-screenshots/maze4.png"/></a><a class="carousel-item" href="#img3d-maze-screenshotsmaze5png-screenshot-4"><img src="/img/3d-maze-screenshots/maze5.png"/></a><a class="carousel-item" href="#img3d-maze-screenshotsmaze6png-screenshot-5"><img src="/img/3d-maze-screenshots/maze6.png"/></a></div></div></div></main><footer class="page-footer" style="padding-bottom: 20px;"><div class="right-align container">© 2017 Benjamin Rajs Wagner</div></footer></body></html>

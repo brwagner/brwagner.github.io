@@ -2,7 +2,6 @@
 .jumbotrax {
   display: inline-flex;
   width: 100%;
-  min-height: 450px;
   border-bottom-left-radius: 2em;
   border-bottom-right-radius: 2em;
 }
@@ -16,24 +15,72 @@
   display: block;
 }
 
-.word-holder > .jumbotrax-title-text {
-  margin-left: -7px;
-  font-size: 7em;
+@media (min-width: 900px) {
+  .jumbotrax-height {
+    min-height: 400px;
+  }
+
+  .word-holder > .jumbotrax-title-text {
+    margin-left: -8px;
+    font-size: 8em;
+  }
+
+  .word-holder > .jumbotrax-subtitle-text {
+    display: block;
+    font-size: 4em;
+    font-weight: 100;
+  }
 }
 
-.word-holder > .jumbotrax-subtitle-text {
-  display: block;
-  font-size: 4em;
-  font-weight: 100;
+@media (max-width: 900px) {
+  .jumbotrax-height {
+    min-height: 350px;
+  }
+
+  .word-holder > .jumbotrax-title-text {
+    margin-left: -6px;
+    font-size: 6em;
+  }
+
+  .word-holder > .jumbotrax-subtitle-text {
+    display: block;
+    font-size: 3em;
+    font-weight: 100;
+  }
 }
 
-.triangle-down {
-  width: 0;
-  height: 0;
-  border-left: 50px solid transparent;
-  border-right: 50px solid transparent;
-  border-top: 50px solid #9c27b0;
-  margin: 0 auto;
+@media (max-width: 690px) {
+  .jumbotrax-height {
+    min-height: 300px;
+  }
+
+  .word-holder > .jumbotrax-title-text {
+    margin-left: -4px;
+    font-size: 4em;
+  }
+
+  .word-holder > .jumbotrax-subtitle-text {
+    display: block;
+    font-size: 2em;
+    font-weight: 100;
+  }
+}
+
+@media (max-width: 450px) {
+  .jumbotrax-height {
+    min-height: 250px;
+  }
+
+  .word-holder > .jumbotrax-title-text {
+    margin-left: -3px;
+    font-size: 3em;
+  }
+
+  .word-holder > .jumbotrax-subtitle-text {
+    display: block;
+    font-size: 1.5em;
+    font-weight: 100;
+  }
 }
 
 .triangle {
@@ -63,4 +110,11 @@
   height: 3px;
   margin: 2.5rem auto 0;
   border-bottom: 0.15rem solid #9c27b0;
+}
+
+html, body
+{
+  height: 100%;
+  width: 100%;
+  margin: 0;
 }

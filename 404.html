@@ -9,11 +9,11 @@ $(document).ready(function(){
     $('.carousel').carousel('next');
   }
   var interval = setInterval(nextSlide, 3000);
-  $('.carousel.carousel-slider').on('mousedown', function(e) {
+  $('.carousel').on('mousedown', function(e) {
     clearInterval(interval);
     interval = setInterval(nextSlide, 3000);
   });
-});</script></head><body><div class="navbar-fixed"><nav class="nav-wrapper"><a class="brand-logo" href="/">&nbsp;[B.R.W]</a><ul class="right hide-on-med-and-down" id="nav-mobile"><li><a href="#">Home</a></li><li><a href="#">Projects</a></li><li><a href="#">Contact</a></li></ul></nav></div><style type="text/css" media="screen">
+});</script></head><body><header><div class="navbar-fixed"><nav class="nav-wrapper"><a class="brand-logo" href="/">&nbsp;[B.R.W]</a><ul class="right hide-on-med-and-down" id="nav-mobile"><li><a href="#">Home</a></li><li><a href="#">Projects</a></li><li><a href="#">Contact</a></li></ul></nav></div></header><main><style type="text/css" media="screen">
   .container {
     margin: 10px auto;
     max-width: 600px;
@@ -33,4 +33,4 @@ $(document).ready(function(){
   <p><strong>Page not found :(</strong></p>
   <p>The requested page could not be found.</p>
 </div>
-</body></html>
+</main><footer class="page-footer" style="padding-bottom: 20px;"><div class="right-align container">© 2017 Benjamin Rajs Wagner</div></footer></body></html>
