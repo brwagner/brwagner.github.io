@@ -11,9 +11,9 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     script.
-      new WOW().init({
+      new WOW({
         mobile: false
-      });
+      }).init();
       $(document).ready(function(){
         $('.carousel.carousel-slider').carousel({
           fullWidth: true,

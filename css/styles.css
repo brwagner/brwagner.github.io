@@ -139,5 +139,6 @@ html, body
 @media only screen and (min-width: 601px) {
   .material-icons {
     line-height: 64px !important;
+    height: 64px !important;
   }
 }
