@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head><title></title><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"><link rel="stylesheet" href="/css/styles.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1.0"><script>new WOW({
   mobile: false
 }).init();
-$(document).ready(function(){
+$(document).ready(function() {
   $('.carousel.carousel-slider').carousel({
     fullWidth: true,
     duration: 375,
@@ -15,7 +15,16 @@ $(document).ready(function(){
     clearInterval(interval);
     interval = setInterval(nextSlide, 3000);
   });
-  $('.scrollspy').scrollSpy({scrollOffset: 140});
+  $('.scrollspy').scrollSpy({
+    getActiveElement: function(id) {
+      var spySection = $('a[href="#' + id + '"]').parent();
+      if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+        spySection = spySection.next();
+      }
+      spySection.siblings().removeClass('active');
+      return spySection;
+    }
+  });
 });</script></head><body><style type="text/css" media="screen">
   .container {
     margin: 10px auto;
@@ -36,4 +45,4 @@ $(document).ready(function(){
   <p><strong>Page not found :(</strong></p>
   <p>The requested page could not be found.</p>
 </div>
-<footer class="page-footer" style="padding-bottom: 20px;"><div class="right-align container">© 2017 Benjamin Rajs Wagner</div></footer></body></html>
+<footer class="page-footer scrollspy" style="padding-bottom: 20px;"><div class="right-align container">© 2017 Benjamin Rajs Wagner</div></footer></body></html>
