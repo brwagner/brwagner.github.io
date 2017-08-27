@@ -125,7 +125,7 @@
 .header-line {
   width: 100px;
   height: 3px;
-  margin: 2.5rem auto 0;
+  margin: auto;
   border-bottom: 0.15rem solid #9c27b0;
 }
 

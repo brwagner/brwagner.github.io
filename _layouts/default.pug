@@ -14,7 +14,7 @@ html
       new WOW({
         mobile: false
       }).init();
-      $(document).ready(function(){
+      $(document).ready(function() {
         $('.carousel.carousel-slider').carousel({
           fullWidth: true,
           duration: 375,
@@ -28,11 +28,20 @@ html
           clearInterval(interval);
           interval = setInterval(nextSlide, 3000);
         });
-        $('.scrollspy').scrollSpy({scrollOffset: 140});
+        $('.scrollspy').scrollSpy({
+          getActiveElement: function(id) {
+            var spySection = $('a[href="#' + id + '"]').parent();
+            if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+              spySection = spySection.next();
+            }
+            spySection.siblings().removeClass('active');
+            return spySection;
+          }
+        });
       });
   body
     | {{content}}
-    footer.page-footer(style='padding-bottom: 20px;')
+    footer.page-footer.scrollspy(style='padding-bottom: 20px;')
       div.right-align.container.
         © {{ 'now' | date: "%Y" }} Benjamin Rajs Wagner
 

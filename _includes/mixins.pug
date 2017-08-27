@@ -51,6 +51,8 @@ mixin slideShow(filter_directory)
       a.carousel-item(href='#' + slugify(file.path) + '-screenshot-' + number++)
         img(src=file.path)
 
-mixin header(title)
-  div.wow.fadeIn.header-line
-  h2.wow.fadeIn.center-align.scrollspy(id=slugify(title))=title
+mixin section(title)
+  section.section.wow.fadeIn.scrollspy(id=slugify(title))
+    div.header-line
+    h2.center-align=title
+    block
