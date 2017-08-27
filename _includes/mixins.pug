@@ -12,6 +12,16 @@
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
   }
+  function filterFiles(filter_directory) {
+    var files = [];
+    var len = allFiles.length;
+    for (var i = 0; i < len; i++) {
+      if (allFiles[i].path.startsWith(filter_directory)) {
+        files.push(allFiles[i]);
+      }
+    }
+    return files;
+  }
 
 mixin youtube(id)
   div.video-container
@@ -24,16 +34,23 @@ mixin youtube(id)
     )
 
 mixin photos(filter_directory)
+  -
+    var files = filterFiles(filter_directory);
+    var lgClass = files.length > 2 && !(files.length % 4 == 0) ? ' l4' : '';
   div.row
-    each file in allFiles
-      if file.path.startsWith(filter_directory)
-        div.col.s12.m6
-          img.responsive-img.z-depth-2(src=file.path)
+    each file in files
+      div(class='col s12 m6' + lgClass)
+        img.responsive-img.z-depth-2(src=file.path)
 
 mixin slideShow(filter_directory)
-  - var number = 0;
+  -
+    var number = 0;
+    var files = filterFiles(filter_directory);
   div.carousel.carousel-slider.z-depth-2(style='margin-top: 25px; margin-bottom: 25px')
-    each file in allFiles
-      if file.path.startsWith(filter_directory)
-        a.carousel-item(href='#' + slugify(file.path) + '-screenshot-' + number++)
-          img(src=file.path)
+    each file in files
+      a.carousel-item(href='#' + slugify(file.path) + '-screenshot-' + number++)
+        img(src=file.path)
+
+mixin header(title)
+  div.wow.fadeIn.header-line
+  h2.wow.fadeIn.center-align.scrollspy(id=slugify(title))=title

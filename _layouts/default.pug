@@ -11,7 +11,9 @@ html
     script(src='https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     script.
-      new WOW().init();
+      new WOW().init({
+        mobile: false
+      });
       $(document).ready(function(){
         $('.carousel.carousel-slider').carousel({
           fullWidth: true,
@@ -26,20 +28,10 @@ html
           clearInterval(interval);
           interval = setInterval(nextSlide, 3000);
         });
+        $('.scrollspy').scrollSpy({scrollOffset: 140});
       });
   body
-    header
-      div.navbar-fixed
-        nav.nav-wrapper
-          a.brand-logo(href='/') &nbsp;[B.R.W]
-          ul#nav-mobile.right.hide-on-med-and-down
-            li
-              a(href='#') Home
-            li
-              a(href='#') Projects
-            li
-              a(href='#') Contact
-    main {{content}}
+    | {{content}}
     footer.page-footer(style='padding-bottom: 20px;')
       div.right-align.container.
         © {{ 'now' | date: "%Y" }} Benjamin Rajs Wagner

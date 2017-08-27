@@ -2,6 +2,7 @@
 title: Ben Rajs Wagner
 layout: default
 ---
+include mixins
 
 -
   var animDuration = 1.0
@@ -16,28 +17,44 @@ layout: default
     { title: 'PCG 3D Maze', image: '3d-maze.png', url: '3d-maze' }
   ]
 
-div.purple.jumbotrax.jumbotrax-height.z-depth-2
-  div.word-holder
-    span.jumbotrax-word-block.jumbotrax-title-text.white-text
-      each val, index in titleStrings
-        span.wow.fadeIn.text-shadow-2(
-          data-wow-duration=titleAnimDuration + 's',
-          data-wow-delay=index * titleAnimDuration + 's'
-        )=val
-    span.wow.fadeInLeft.jumbotrax-word-block.jumbotrax-subtitle-text.white-text.text-shadow-2(
-      data-wow-duration='0.5s',
-      data-wow-delay=animDuration + 's'
-    ) Web, mobile, games, etc.
-div.triangle
-div.container
-  div.header-line
-  h2.center-align.
-    Projects
-  p.wow.fadeIn.flow-text.
-    Click on an image for a description of the project it shows. Visit my #[a(href='https://github.com/brwagner') GitHub] for source code.
-  div.row
-    each project, index in projects
-      div.col.s12.m6.wow.fadeIn(data-wow-duration=animDuration + 's')
-        a(href='/projects/' + project.url)
-          img.hoverable.responsive-img.z-depth-2(src='/img/' + project.image)
-        h5.center-align(style='text-decoration: none;')=project.title
+header
+  div.navbar-fixed
+    nav.nav-wrapper
+      ul.left
+        li
+          a(href='#about') About
+        li
+          a(href='#projects') Projects
+        li
+          a(href='#contact') Contact
+
+main
+  div.purple.jumbotrax.jumbotrax-height.z-depth-2
+    div.word-holder
+      span.jumbotrax-word-block.jumbotrax-title-text.white-text
+        each val, index in titleStrings
+          span.wow.fadeIn.text-shadow-2(
+            data-wow-duration=titleAnimDuration + 's',
+            data-wow-delay=index * titleAnimDuration + 's'
+          )=val
+      span.wow.fadeInLeft.jumbotrax-word-block.jumbotrax-subtitle-text.white-text.text-shadow-2(
+        data-wow-duration='0.5s',
+        data-wow-delay=animDuration + 's'
+      ) Web, mobile, games, etc.
+  div.triangle
+  div.container
+    +header('About')
+    p.wow.fadeIn.flow-text.
+      Welcome to my digital portfolio! I'm Benno, an aspiring software engineer currently enrolled at Northeastern University. I am interested in math, programming, graphics, UI design, and database design. I like to play guitar, bindge listen to podcasts, and program in my spare time.
+    +header('Projects')
+    p.wow.fadeIn.flow-text.
+      Click on an image for a description of the project it shows. Visit my #[a(href='https://github.com/brwagner') GitHub] for source code.
+    div.row
+      each project, index in projects
+        div.col.s12.m6.wow.fadeIn(data-wow-duration=animDuration + 's')
+          a(href='/projects/' + project.url)
+            img.hoverable.responsive-img.z-depth-2(src='/img/' + project.image)
+          h5.center-align(style='text-decoration: none;')=project.title
+    +header('Contact')
+    p.wow.fadeIn.flow-text.center-align.
+      The best way to reach me is by email at #[a(href='mailto:brajswagner@gmail.com') brajswagner@gmail.com].#[br]Also, feel free to add me on #[a(href='https://www.linkedin.com/in/brajswagner') Linkedin].
