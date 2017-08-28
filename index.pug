@@ -9,12 +9,21 @@ include mixins
   var titleStrings = ['Ben ', 'Rajs ', 'Wagner']
   var titleAnimDuration = animDuration / titleStrings.length
   var projects = [
-    { title: 'DrawLaPhone', image: 'drawlaphone.jpg', url: 'drawlaphone'},
-    { title: 'Rocketgilbs', image: 'rocketgilbs.jpg', url: 'rocketgilbs' },
-    { title: 'GPS Alarm Clock', image: 'gps-alarm-clock.jpg', url: 'gps-alarm-clock' },
-    { title: 'STAR Submarine', image: 'star-submarine.jpg', url: 'star-submarine' },
-    { title: 'Heightmap Generation', image: 'heightmap-generation.jpg', url: 'heightmap-generation' },
-    { title: 'PCG 3D Maze', image: '3d-maze.jpg', url: '3d-maze' }
+    [
+      { title: 'Hey,Charlie', image: 'hey-charlie.jpg', url: 'hey-charlie'},
+      { title: 'Rocketgilbs', image: 'rocketgilbs.jpg', url: 'rocketgilbs' }
+    ],
+    [
+      { title: 'DrawLaPhone', image: 'drawlaphone.jpg', url: 'drawlaphone'},
+      { title: 'GPS Alarm Clock', image: 'gps-alarm-clock.jpg', url: 'gps-alarm-clock' }
+    ],
+    [
+      { title: 'STAR Submarine', image: 'star-submarine.jpg', url: 'star-submarine' },
+      { title: 'Heightmap Generation', image: 'heightmap-generation.jpg', url: 'heightmap-generation' }
+    ],
+    [
+      { title: 'PCG 3D Maze', image: '3d-maze.jpg', url: '3d-maze' }
+    ]
   ]
 
 header
@@ -50,14 +59,18 @@ main
       p.flow-text.
         Click on an image for a description of the project it shows. Visit my #[a(href='https://github.com/brwagner') GitHub] for source code.
       div.row
-        each project, index in projects
-          div.wow.col.s12.m6(
-            class=index % 2 == 0 ? 'fadeInLeft' : 'fadeInRight',
-            data-wow-duration=animDuration + 's'
-          )
-            a(href='/projects/' + project.url)
-              img.hoverable.responsive-img.z-depth-2(src='/img/' + project.image)
-            h5.center-align(style='text-decoration: none;')=project.title
+        each project_row, row_index in projects
+          div.row
+            each project, project_index in project_row
+              div.wow.col.s12.m6(class=(
+                  (project_index % 2 == 0 ? 'fadeInLeft' : 'fadeInRight') +
+                  (row_index == projects.length - 1 && project_row.length == 1 ? ' push-m3' : '')
+                ),
+                data-wow-duration=animDuration + 's'
+              )
+                a(href='/projects/' + project.url)
+                  img.hoverable.responsive-img.z-depth-2(src='/img/' + project.image)
+                h5.center-align(style='text-decoration: none;')=project.title
     +section('Contact')
       p.flow-text.center-align.
         The best way to reach me is by email at #[a(href='mailto:brajswagner@gmail.com') brajswagner@gmail.com].#[br]Also, feel free to add me on #[a(href='https://www.linkedin.com/in/brajswagner') Linkedin].

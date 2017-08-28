@@ -31,7 +31,7 @@ html
         $('.scrollspy').scrollSpy({
           getActiveElement: function(id) {
             var spySection = $('a[href="#' + id + '"]').parent();
-            if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+            if($(window).scrollTop() + $(window).height() > $(document).height() - 100 && spySection.next().length > 0) {
               spySection = spySection.next();
             }
             spySection.siblings().removeClass('active');

@@ -5,6 +5,7 @@ layout: default
 header
   div.navbar-fixed
     nav.nav-wrapper
+      a(href="#" class="brand-logo center") {{ page.title }}
       ul.left
         li
           a(href='/', onclick='history.back();')
@@ -12,5 +13,4 @@ header
 
 main
   div(class='container')
-    h2 {{ page.title }}
     div {{ content }}
