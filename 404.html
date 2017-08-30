@@ -18,13 +18,14 @@ $(document).ready(function() {
   $('.scrollspy').scrollSpy({
     getActiveElement: function(id) {
       var spySection = $('a[href="#' + id + '"]').parent();
-      if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+      if($(window).scrollTop() + $(window).height() > $(document).height() - 100 && spySection.next().length > 0) {
         spySection = spySection.next();
       }
       spySection.siblings().removeClass('active');
       return spySection;
     }
   });
+  $('ul.tabs').tabs();
 });</script></head><body><style type="text/css" media="screen">
   .container {
     margin: 10px auto;

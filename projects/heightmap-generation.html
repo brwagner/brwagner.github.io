@@ -18,12 +18,13 @@ $(document).ready(function() {
   $('.scrollspy').scrollSpy({
     getActiveElement: function(id) {
       var spySection = $('a[href="#' + id + '"]').parent();
-      if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+      if($(window).scrollTop() + $(window).height() > $(document).height() - 100 && spySection.next().length > 0) {
         spySection = spySection.next();
       }
       spySection.siblings().removeClass('active');
       return spySection;
     }
   });
-});</script></head><body><header><div class="navbar-fixed"><nav class="nav-wrapper"><ul class="left"><li><a href="/" onclick="history.back();"><i class="material-icons" style="font-size: 40px;">chevron_left</i></a></li></ul></nav></div></header><main><div class="container"><h2>Heightmap Generation</h2><div><p class="flow-text">A height-map generator using a midpoint displacement algorithm. Below are some examples of height-maps I generated. I color each pixel differently based on elevation.
+  $('ul.tabs').tabs();
+});</script></head><body><header><div class="navbar-fixed"><nav class="nav-wrapper"><a class="brand-logo center" href="#">Heightmap Generation</a><ul class="left"><li><a href="/" onclick="history.back();"><i class="material-icons" style="font-size: 40px;">chevron_left</i></a></li></ul></nav></div></header><main><div class="container"><div><p class="flow-text">I made a Java applet (in retrospect I have no idea why) that generates heightmaps using the midpoint displacement algorithm. Below are some examples of height-maps I generated. I color each pixel differently based on elevation.
 </p><div style="margin: 0 15% 0 15%;"><div class="carousel carousel-slider z-depth-2" style="margin-top: 25px; margin-bottom: 25px;"><a class="carousel-item" href="#imgheightmap-genmd1jpg-screenshot-0"><img src="/img/heightmap-gen/md1.jpg"/></a><a class="carousel-item" href="#imgheightmap-genmd4jpg-screenshot-1"><img src="/img/heightmap-gen/md4.jpg"/></a><a class="carousel-item" href="#imgheightmap-genmd7jpg-screenshot-2"><img src="/img/heightmap-gen/md7.jpg"/></a><a class="carousel-item" href="#imgheightmap-genmd8jpg-screenshot-3"><img src="/img/heightmap-gen/md8.jpg"/></a><a class="carousel-item" href="#imgheightmap-genmd9jpg-screenshot-4"><img src="/img/heightmap-gen/md9.jpg"/></a></div></div></div></div></main><footer class="page-footer scrollspy" style="padding-bottom: 20px;"><div class="right-align container">© 2017 Benjamin Rajs Wagner</div></footer></body></html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html><html><head><title>Hey,Charlie</title><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"><link rel="stylesheet" href="/css/styles.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1.0"><script>new WOW({
+  mobile: false
+}).init();
+$(document).ready(function() {
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    duration: 375,
+    indicators: true
+  });
+  function nextSlide() {
+    $('.carousel').carousel('next');
+  }
+  var interval = setInterval(nextSlide, 3000);
+  $('.carousel').on('mousedown', function(e) {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 3000);
+  });
+  $('.scrollspy').scrollSpy({
+    getActiveElement: function(id) {
+      var spySection = $('a[href="#' + id + '"]').parent();
+      if($(window).scrollTop() + $(window).height() > $(document).height() - 100 && spySection.next().length > 0) {
+        spySection = spySection.next();
+      }
+      spySection.siblings().removeClass('active');
+      return spySection;
+    }
+  });
+  $('ul.tabs').tabs();
+});</script></head><body><header><div class="navbar-fixed"><nav class="nav-wrapper"><a class="brand-logo center" href="#">Hey,Charlie</a><ul class="left"><li><a href="/" onclick="history.back();"><i class="material-icons" style="font-size: 40px;">chevron_left</i></a></li></ul></nav></div></header><main><div class="container"><div><p class="flow-text">During the Summer of 2016, I had the good fortune of meeting the people behind <a href="http://heycharlie.org">Hey,Charlie</a>, a mobile application that helps recovering opioid addicts avoid people and places which may cause them to relapse. I thought the idea had an enormous potential to do actual good in people's lives, so I decided to volunteer my Android development skills to the project.
+</p><p class="flow-text">The prototype of the app was pretty simple. The user would mark people and places they wanted to avoid using their contacts list and a map view. Then the app would periodically check if the user was messaging people or going too close to places they wanted to avoid and send the user a notification to give them encouragement or the option to call the number of someone who could help them.
+</p><div class="row"><div class="col s12 m6 l4"><img class="responsive-img z-depth-2" src="/img/hey-charlie/hc-contacts-1.jpg"/></div><div class="col s12 m6 l4"><img class="responsive-img z-depth-2" src="/img/hey-charlie/hc-contacts-2.jpg"/></div><div class="col s12 m6 l4"><img class="responsive-img z-depth-2" src="/img/hey-charlie/hc-map.jpg"/></div></div><p class="flow-text">There were a fair number of challenges involved with prototyping the app. To implement the features in the way we wanted, we needed a fair amount of control over functions that the AndroidOS wasn't readily willing to give up. Getting access to the user's notifications requires requesting a special permission, which was annoying for onboarding and UX. In addition, the notification API does not allow for any modification of existing notifications. What I ended up doing was canceling the notification received by the user and recreating it immediately after with the extra button. This worked most of the time, but on certain devices the original notification would still show up half a second before the new notification replaced it, which created a very strange visual effect. Unfortunately, I had to work on other features before I could come up with a fix.
+</p><p class="flow-text">Many of the people on the original Hey,Charlie team were unfamiliar with Android development which created its own challenges. I originally wanted to use the <a href="https://github.com/ReactiveX/RxAndroid">RXAndroid</a> library to handle async behavior, but after talking to some of the team about it, I decided that the learning curve would be too steep to justify any productivity gains. To handle asynchronicity, I decided to use an event based pub-sub system, which worked fine and was easier for everyone to understand. Sometimes, it's better to use an easy to understand abstraction than a more robust, but complicated abstraction.
+</p><p class="flow-text">In the Fall of 2016 I left the Hey,Charlie project to focus on my course work. I was glad to hear that the project was accepted into the MassChallenge Digital Healthcare Accelerator. I wish the best of luck to everyone still involved with Hey,Charlie. Although the phrase is a bit of a joke in startup culture, I actually think they're making the world a better place.</p></div></div></main><footer class="page-footer scrollspy" style="padding-bottom: 20px;"><div class="right-align container">© 2017 Benjamin Rajs Wagner</div></footer></body></html>

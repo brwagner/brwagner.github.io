@@ -1,0 +1,44 @@
+<!DOCTYPE html><html><head><title>PCG 3D Maze</title><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"><link rel="stylesheet" href="/css/styles.css"><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script> <script src="TemplateData/UnityProgress.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1.0"><script>new WOW({
+  mobile: false
+}).init();
+$(document).ready(function() {
+  $('.carousel.carousel-slider').carousel({
+    fullWidth: true,
+    duration: 375,
+    indicators: true
+  });
+  function nextSlide() {
+    $('.carousel').carousel('next');
+  }
+  var interval = setInterval(nextSlide, 3000);
+  $('.carousel').on('mousedown', function(e) {
+    clearInterval(interval);
+    interval = setInterval(nextSlide, 3000);
+  });
+  $('.scrollspy').scrollSpy({
+    getActiveElement: function(id) {
+      var spySection = $('a[href="#' + id + '"]').parent();
+      if($(window).scrollTop() + $(window).height() > $(document).height() - 100 && spySection.next().length > 0) {
+        spySection = spySection.next();
+      }
+      spySection.siblings().removeClass('active');
+      return spySection;
+    }
+  });
+  $('ul.tabs').tabs();
+});</script></head><body><header><div class="navbar-fixed"><nav class="nav-wrapper"><a class="brand-logo center" href="#">PCG 3D Maze</a><ul class="left"><li><a href="/" onclick="history.back();"><i class="material-icons" style="font-size: 40px;">chevron_left</i></a></li></ul></nav></div></header><main><div class="container"><div><br/><div class="col s12"><ul class="tabs"><li class="tab col s3"><a href="../3d-maze" onclick="window.location.replace('../3d-maze');">writeup</a></li><li class="tab col s3"><a class="active" href="#game">game</a></li></ul></div><div class="col s12" id="writeup"></div><div class="col s12" id="game"><p class="flow-text center-align"><span id="loadingbar"></span></p><div class="row" style="margin-top: 25px;"><canvas class="z-depth-2 emscripten" id="canvas" oncontextmenu="event.preventDefault()" style="width: 100%; height: 100%;"></canvas><br/><div class="fullscreen right"><img src="TemplateData/fullscreen.png" width="38" height="38" alt="Fullscreen" title="Fullscreen" onclick="SetFullscreen(1);"/></div><h5>Controls</h5><p class="flow-text" style="margin-top: 0px;">WASD or ARROW KEYS to move<br/>SPACE to jump<br/>MOUSE to look around</p><script type="text/javascript">window.gameProgress = function(progress, message) {
+  if (message) {
+    $('#loadingbar').html(message);
+  }
+}
+var Module = {
+  TOTAL_MEMORY: 268435456,
+  errorhandler: null,
+  compatibilitycheck: null,
+  backgroundColor: "#222C36",
+  splashStyle: "Light",
+  dataUrl: "Release/webgl-build.data",
+  codeUrl: "Release/webgl-build.js",
+  asmUrl: "Release/webgl-build.asm.js",
+  memUrl: "Release/webgl-build.mem",
+};</script><script src="Release/UnityLoader.js"></script></div></div></div></div></main><footer class="page-footer scrollspy" style="padding-bottom: 20px;"><div class="right-align container">© 2017 Benjamin Rajs Wagner</div></footer></body></html>
