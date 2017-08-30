@@ -1,0 +1,18 @@
+---
+layout: project
+title: PCG 3D Maze
+scripts: ['TemplateData/UnityProgress.js']
+---
+include mixins
+- setAllFiles({{ site.static_files | jsonify }});
+
+br
++addLinkTab('writeup', '../3d-maze')
++addTab('game', true)
+  +game('PCG 3D Maze')
+    | WASD or ARROW KEYS to move
+    br
+    | SPACE to jump
+    br
+    | MOUSE to look around
++buildTabs()

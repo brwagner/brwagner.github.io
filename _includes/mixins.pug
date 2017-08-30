@@ -56,3 +56,72 @@ mixin section(title)
     div.header-line
     h2.center-align=title
     block
+
+- var tabContent = {};
+
+mixin addTab(key, active)
+  - tabContent[key] = { active: active, link: false, content: this.block };
+
+mixin addLinkTab(key, href, active)
+  - tabContent[key] = { active: active, link: true, content: href };
+
+mixin buildTabs()
+  div.col.s12
+    ul.tabs
+      for layout, title in tabContent
+        li.tab.col.s3
+          if layout.link
+            a(class=layout.active ? 'active' : '',
+              href=layout.content,
+              onclick=layout.active ? '' : 'window.location.replace(\'' + layout.content + '\');'
+            )=title
+          else
+            a(class=layout.active ? 'active' : '',
+              href='#' + slugify(title))=title
+  for layout, title in tabContent
+    div.col.s12(id=slugify(title))
+      -
+        if (layout.link == false) {
+          layout.content();
+        }
+  - tabContent = {};
+
+mixin game(title)
+  p.flow-text.center-align
+    span#loadingbar
+  div.row(style='margin-top: 25px;')
+    canvas.z-depth-2#canvas.emscripten(
+      oncontextmenu='event.preventDefault()',
+      style='width: 100%; height: 100%;'
+    )
+    br
+    div.fullscreen.right
+      img(
+        src='TemplateData/fullscreen.png',
+        width='38',
+        height='38',
+        alt='Fullscreen',
+        title='Fullscreen',
+        onclick='SetFullscreen(1);'
+      )
+    h5 Controls
+    p.flow-text(style='margin-top: 0px')
+      block
+    script(type='text/javascript').
+      window.gameProgress = function(progress, message) {
+        if (message) {
+          $('#loadingbar').html(message);
+        }
+      }
+      var Module = {
+        TOTAL_MEMORY: 268435456,
+        errorhandler: null,
+        compatibilitycheck: null,
+        backgroundColor: "#222C36",
+        splashStyle: "Light",
+        dataUrl: "Release/webgl-build.data",
+        codeUrl: "Release/webgl-build.js",
+        asmUrl: "Release/webgl-build.asm.js",
+        memUrl: "Release/webgl-build.mem",
+      };
+    script(src='Release/UnityLoader.js')
